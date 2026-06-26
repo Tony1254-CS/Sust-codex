@@ -61,7 +61,25 @@ export type ValidationResult = ValidationSuccess | ValidationError;
  * - 422 for empty/whitespace complaint
  * - Success with coerced data otherwise
  */
-export function validateRequest(body: unknown): ValidationResult {
+export function validateRequest(rawBody: unknown): ValidationResult {
+  let body = rawBody;
+  
+  if (Buffer.isBuffer(body)) {
+    body = body.toString('utf-8');
+  }
+  
+  if (typeof body === 'string') {
+    try {
+      body = JSON.parse(body);
+    } catch {
+      return {
+        success: false,
+        statusCode: 400,
+        error: 'invalid_request',
+      };
+    }
+  }
+
   // Check if body is an object at all
   if (body === null || body === undefined || typeof body !== 'object') {
     return {
