@@ -1,0 +1,23 @@
+{
+  "name": "queuestorm-investigator",
+  "version": "1.0.0",
+  "description": "AI-powered fintech customer support ticket investigation API",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "dev": "vercel dev",
+    "type-check": "tsc --noEmit",
+    "lint": "tsc --noEmit --strict"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@vercel/node": "^3.2.0",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

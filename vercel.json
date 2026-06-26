@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/health", "destination": "/api/health" },
+    { "source": "/analyze-ticket", "destination": "/api/analyze-ticket" }
+  ],
+  "functions": {
+    "api/analyze-ticket.ts": {
+      "maxDuration": 30
+    }
+  }
+}
