@@ -4,7 +4,7 @@
   "description": "AI-powered fintech customer support ticket investigation API",
   "private": true,
   "scripts": {
-    "build": "tsc",
+    "build:local": "tsc",
     "dev": "vercel dev",
     "type-check": "tsc --noEmit",
     "lint": "tsc --noEmit --strict"
