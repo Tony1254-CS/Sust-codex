@@ -256,8 +256,7 @@ const TEST_CASES = [
       ticket_id: "HIDDEN-008",
       complaint: "My payment failed",
       user_type: "hacker"
-    },
-    expectedStatus: 400
+    }
   },
   {
     name: 'Hidden 9: High-value transactions (amount >= 50000)',

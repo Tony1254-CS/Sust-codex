@@ -11,10 +11,10 @@ const transactionSchema = z
   .object({
     transaction_id: z.string().default(''),
     timestamp: z.string().default(''),
-    type: z.enum(['transfer', 'payment', 'cash_in', 'cash_out', 'settlement']).default('transfer'),
+    type: z.enum(['transfer', 'payment', 'cash_in', 'cash_out', 'settlement']).catch('transfer'),
     amount: z.coerce.number().default(0),
     counterparty: z.string().default(''),
-    status: z.enum(['pending', 'completed', 'failed', 'reversed']).default('completed'),
+    status: z.enum(['pending', 'completed', 'failed', 'reversed']).catch('completed'),
   })
   .passthrough();
 
@@ -27,9 +27,9 @@ export const requestSchema = z.object({
     .string({ required_error: 'ticket_id is required' })
     .min(1, 'ticket_id must be non-empty'),
   complaint: z.string({ required_error: 'complaint is required' }).max(2000),
-  language: z.enum(['en', 'bn', 'mixed']).optional(),
+  language: z.enum(['en', 'bn', 'mixed']).catch('en').optional(),
   channel: z.string().optional(),
-  user_type: z.enum(['customer', 'merchant', 'agent']).optional(),
+  user_type: z.enum(['customer', 'merchant', 'agent']).catch('customer').optional(),
   campaign_context: z.string().optional(),
   transaction_history: z.array(transactionSchema).optional().default([]),
   metadata: metadataSchema,
